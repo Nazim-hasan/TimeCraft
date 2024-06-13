@@ -1,6 +1,6 @@
 import { SafeAreaView, StyleSheet } from 'react-native'
 import React from 'react'
-import Text from '../../components/shared/text/Text'
+import Text from 'components/shared/text/Text'
 
 const LoginScreen = () => {
   return (

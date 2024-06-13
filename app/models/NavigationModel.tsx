@@ -1,7 +1,10 @@
 import { NavigatorScreenParams } from "@react-navigation/native";
+import { CommonRoutes } from "../libs/shared/types/enums/navigation.enum";
+
 
 export type AuthStackParamList = {
-  LoginScreen: undefined
+  [CommonRoutes.SignIn]: undefined;
+  [CommonRoutes.Intro]: undefined;
 };
 
 export type RootTabParamList = {

@@ -16,14 +16,9 @@ const Navigation = props => {
     getAuthData();
   }, []);
   
-
-
-
   
-
   const getAuthData = async () => {
     const storedAuth = await getData();
-    console.log('storedAuth', storedAuth)
     if (!storedAuth) {
       setLoading(false);
       return;
@@ -37,7 +32,7 @@ const Navigation = props => {
   };
 
 
-  return !loading ? <>{user ? <AppNavigator /> : <AuthNavigator />}</> : null;
+  return !loading ? <>{user ? <AppNavigator /> : <AppNavigator />}</> : null;
 };
 
 export default Navigation;

@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     borderRadius: metrics.spacing.s,
   },
   btnText: {
-    color: colors.lightGray,
+    color: colors.white,
     fontFamily: 'heading',
     textAlign: 'center',
     fontWeight: 'bold',
