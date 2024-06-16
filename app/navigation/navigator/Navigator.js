@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import AppNavigator from './AppNavigator';
 import AuthNavigator from './AuthNavigator';
 import SplashScreen from 'react-native-splash-screen';
-import { useStateValue } from '../../services/auth/hooks/useStateValue';
-import { getData } from '../../storage/asyncStore';
+import { useStateValue } from 'services/auth/hooks';
+import { getData } from 'storage/asyncStore';
 
 const Navigation = props => {
   const [{user}, dispatch] = useStateValue();
@@ -15,8 +15,7 @@ const Navigation = props => {
     }
     getAuthData();
   }, []);
-  
-  
+
   const getAuthData = async () => {
     const storedAuth = await getData();
     if (!storedAuth) {
@@ -31,8 +30,7 @@ const Navigation = props => {
     setLoading(false);
   };
 
-
-  return !loading ? <>{user ? <AppNavigator /> : <AppNavigator />}</> : null;
+  return !loading ? <>{user ? <AppNavigator /> : <AuthNavigator />}</> : null;
 };
 
 export default Navigation;

@@ -1,6 +1,5 @@
 import {Image, StyleSheet, View} from 'react-native';
 import React from 'react';
-import {navigate} from 'services/helper/utils';
 import {CommonRoutes} from 'libs/shared/types/enums';
 import Container from 'layout/shared/Container';
 import {images} from 'theme/images';
@@ -8,9 +7,11 @@ import Text from 'components/shared/text/Text';
 import {colors} from 'theme/colors';
 import {metrics} from 'theme/metrics';
 import Button from 'components/shared/button/Botton';
+import { navigate } from 'navigation';
 
 const OnboardingScreen = () => {
   const handlePress = () => {
+    console.log('CommonRoutes.SignIn', CommonRoutes.SignIn)
     navigate(CommonRoutes.SignIn);
   };
   return (

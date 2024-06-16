@@ -4,6 +4,7 @@ import {navigationRef} from './app/navigation';
 import AppScreen from './app/layout/AppScreen/AppScreen';
 import Navigation from './app/navigation/navigator/Navigator';
 import {StateProvider} from './app/services/auth/contexts';
+import {RecoilRoot} from 'recoil';
 
 const App = () => {
   const navTheme = {
@@ -15,13 +16,15 @@ const App = () => {
   };
 
   return (
-    <NavigationContainer ref={navigationRef}>
-      <StateProvider>
-        <AppScreen>
-          <Navigation theme={navTheme} />
-        </AppScreen>
-      </StateProvider>
-    </NavigationContainer>
+    <RecoilRoot>
+      <NavigationContainer ref={navigationRef}>
+        <StateProvider>
+          <AppScreen>
+            <Navigation theme={navTheme} />
+          </AppScreen>
+        </StateProvider>
+      </NavigationContainer>
+    </RecoilRoot>
   );
 };
 

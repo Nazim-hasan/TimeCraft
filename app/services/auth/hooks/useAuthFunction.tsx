@@ -3,7 +3,7 @@ import {showMessage} from 'react-native-flash-message';
 import { useStateValue } from './useStateValue';
 
 const useAuthFunction = () => {
-  const [{user, token}, dispatch] = useStateValue();
+  const [{user, token, appSettings}, dispatch] = useStateValue();
 
   const handleLogin = (value: string) => {
     dispatch({

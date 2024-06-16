@@ -3,5 +3,6 @@ export const colors = {
   darkGray: '#24252C',
   lightGray: "#6E6A7C",
   white: '#FFFFFF',
+  danger: '#FF0000',
 };
  
