@@ -18,5 +18,5 @@ export type RootDrawerParamList = {
 
 export type AppRootStackParamList = {
   Root: NavigatorScreenParams<RootDrawerParamList> | undefined;
-  HomeScreen: undefined,
+  Home: undefined,
 };

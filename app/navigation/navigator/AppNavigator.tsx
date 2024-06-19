@@ -1,22 +1,20 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { AppRootStackParamList } from 'models/NavigationModel';
+import {AppRootStackParamList} from 'models/NavigationModel';
 import HomeScreen from 'screens/home-screen/HomeScreen';
+import {CommonRoutes} from 'libs/shared/types/enums';
 
-const Stack = createNativeStackNavigator<AppRootStackParamList>();
+const App = createNativeStackNavigator<AppRootStackParamList>();
 
 const AppNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="HomeScreen">
-      {/* <Stack.Screen
-        name="Root"
-        component={BottomTabNavigator}
-        options={{
-          headerShown: false
-        }}
-      /> */}
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
-    </Stack.Navigator>
+    <App.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName={CommonRoutes.Home}>
+      <App.Screen name={CommonRoutes.Home} component={HomeScreen} />
+    </App.Navigator>
   );
 };
 

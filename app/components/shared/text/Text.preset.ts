@@ -6,6 +6,7 @@ const fontSizes = {
   body: 14,
   lg: 16,
   xl: 20,
+  xxl: 24,
   heading: 28,
 };
 
@@ -21,6 +22,10 @@ export const presets = {
   RegularLg: {
     fontFamily: getFontFamily('bold'),
     fontSize: fontSizes.lg,
+  },
+  RegularXl: {
+    fontFamily: getFontFamily('medium'),
+    fontSize: fontSizes.xl,
   },
   headingBold: {
     fontFamily: getFontFamily('bold'),
