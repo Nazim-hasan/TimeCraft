@@ -2,6 +2,9 @@ import {
   BottomTabBarProps,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
+import {HouseTabIcon} from 'assets/icons/House';
+import TrashIcon from 'assets/icons/Trash';
+import {UserLineIcon} from 'assets/icons/User';
 import {CommonRoutes} from 'libs/shared/types/enums';
 import {TabNavigatorParamList} from 'models/NavigationModel';
 import HomeScreen from 'screens/home-screen/HomeScreen';
@@ -15,27 +18,30 @@ export const TabNavigator = () => {
     <Tab.Navigator
       initialRouteName={CommonRoutes.Home}
       screenOptions={{
-        // tabBarShowLabel: false,
         headerShown: false,
-      }}
-      // tabBar={renderTabBar}
-    >
+      }}>
       <Tab.Screen
         name={CommonRoutes.Home}
         component={HomeScreen}
-        // options={{
-        //   tabBarIcon: () => item.icon,
-        // }}
+        options={{
+          tabBarIcon: () => <HouseTabIcon />,
+        }}
       />
 
-      <Tab.Screen name={CommonRoutes.Trash} component={TrashScreen} />
+      <Tab.Screen
+        name={CommonRoutes.Trash}
+        component={TrashScreen}
+        options={{
+          tabBarIcon: () => <TrashIcon />,
+        }}
+      />
       <Tab.Screen
         //@ts-ignore
         name={CommonRoutes.Profile}
         component={ProfileScreen}
-        // options={{
-        //   tabBarIcon: () => item.icon,
-        // }}
+        options={{
+          tabBarIcon: () => <UserLineIcon />,
+        }}
       />
       {/* Add your tab screens here */}
     </Tab.Navigator>
