@@ -6,6 +6,7 @@ import Greeting from 'components/greeting';
 import {commonStyles} from 'libs/shared/ui/styleSheet';
 import {metrics} from 'theme/metrics';
 import TodoSection from 'components/Todos';
+import { HomeScreenStyles } from './Styled';
 
 const HomeScreen = () => {
   const {handleLogout} = useAuthFunction();
@@ -13,7 +14,7 @@ const HomeScreen = () => {
     <Screen
       preset="fixed"
       scrollViewStyle={commonStyles.scrollViewContainerWithoutHeader}
-      style={styles.screenContainer}
+      style={HomeScreenStyles.screenContainer}
       stickyHeaderIndices={[1]}
       themeName="white"
       bounces={false}>
@@ -26,9 +27,4 @@ const HomeScreen = () => {
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({
-  screenContainer: {
-    paddingHorizontal: metrics.spacing.m,
-    marginVertical: metrics.spacing.m,
-  },
-});
+

@@ -1,9 +1,12 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const MarkDoneContainer = styled.View`
   flex: 1;
-  justifyContent: center;
-`
+  flexDirection: row;
+  justifyContent: space-between;
+  alignItems: center;
+`;
 export const MarkAsDone = styled.Text`
-  textAlign: right;
-`
+`;
+export const Remove = styled.Text`
+`;

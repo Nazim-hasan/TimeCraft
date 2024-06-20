@@ -19,4 +19,11 @@ export type RootDrawerParamList = {
 export type AppRootStackParamList = {
   Root: NavigatorScreenParams<RootDrawerParamList> | undefined;
   Home: undefined,
+  TabStack: undefined;
 };
+
+export type TabNavigatorParamList = {
+  [CommonRoutes.Home]: undefined;
+  [CommonRoutes.Trash]: undefined;
+  [CommonRoutes.Profile]: undefined;
+}

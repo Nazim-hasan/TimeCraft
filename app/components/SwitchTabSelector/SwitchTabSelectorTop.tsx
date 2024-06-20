@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Animated, I18nManager, LayoutChangeEvent } from 'react-native';
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import Config from 'react-native-config';
+
 import { ISwitchTabSelectorProps } from '@smartcrowd/types';
 import { numberAtom, textAtom } from '@smartcrowd/data-access';
 import {

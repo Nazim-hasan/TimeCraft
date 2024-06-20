@@ -1,9 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Animated, I18nManager, LayoutChangeEvent } from 'react-native';
 import { useSetRecoilState } from 'recoil';
-import Config from 'react-native-config';
 import { ISwitchTabSelectorProps } from '@smartcrowd/types';
-import { numberAtom, textAtom } from '@smartcrowd/data-access';
 import {
   CircleAnimationContainer,
   CircleAnimationHorizontalLine,
@@ -16,6 +14,8 @@ import {
   SwitchTabSelectorCircleContainer,
 } from './styled';
 import { useTheme } from 'styled-components';
+import { numberAtom, textAtom } from 'libs/shared/data-access/atoms';
+import { colors } from 'theme/colors';
 
 export const SwitchTabSelectorCircle = React.memo(
   ({
@@ -163,7 +163,7 @@ export const SwitchTabSelectorCircle = React.memo(
                 <Element.customIcon
                   fill={
                     selected === index
-                      ? theme.color.white
+                      ? colors.white
                       : theme.color.primaryLightGray
                   }
                   height={18}
@@ -173,7 +173,7 @@ export const SwitchTabSelectorCircle = React.memo(
               <SwitchTabCircleText
                 selectedColor={selectedColor}
                 isSelected={selected === index}
-                isBold={Config['PLATFORM_NAME'] === 'KSA'}
+                isBold={true}
               >
                 {Element?.label}
               </SwitchTabCircleText>

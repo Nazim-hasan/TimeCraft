@@ -1,17 +1,15 @@
 import MarkDone from 'components/mark-done';
 import TodoCard from 'components/todo-card';
-import React, {useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React from 'react';
 import {SwipeListView} from 'react-native-swipe-list-view';
 
 const MySwipeListView = () => {
-  const [listViewData, setListViewData] = useState(
+  const listViewData= 
     Array(20)
       .fill('')
-      .map((_, i) => ({key: `${i}`, text: `item #${i}`})),
-  );
+      .map((_, i) => ({key: `${i}`, text: `item #${i}`}));
 
-  const renderItem = data => <TodoCard />;
+  const renderItem = (data: any) => <TodoCard />;
 
   const renderHiddenItem = () => <MarkDone />;
 
@@ -20,20 +18,12 @@ const MySwipeListView = () => {
       data={listViewData}
       renderItem={renderItem}
       renderHiddenItem={renderHiddenItem}
-      rightOpenValue={-100}
-      disableRightSwipe
+      rightOpenValue={-50}
+      leftOpenValue={100}
+      showsVerticalScrollIndicator={false}
     />
   );
 };
 
-const styles = StyleSheet.create({
-  rowBack: {
-    alignItems: 'center',
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingLeft: 15,
-  },
-});
 
 export default MySwipeListView;
