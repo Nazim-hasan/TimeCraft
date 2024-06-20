@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { hp, wp } from 'services/helper/responsive-dimenssion';
 import { colors } from 'theme/colors';
+import { metrics } from 'theme/metrics';
 
 export const commonStyles = StyleSheet.create({
   scrollViewContainer: {
