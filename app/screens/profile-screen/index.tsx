@@ -4,6 +4,7 @@ import { Screen } from 'layout/shared/screen/Screen'
 import { commonStyles } from 'libs/shared/ui/styleSheet'
 import { ProfileScreenStyles } from './styled'
 import { useAuthFunction } from 'services/auth/hooks'
+import EditTodo from 'components/EditTodo'
 
 const ProfileScreen = () => {
   const {handleLogout} = useAuthFunction();
@@ -18,6 +19,8 @@ const ProfileScreen = () => {
         <Pressable onPress={handleLogout}>
           <Text>Logout</Text>
         </Pressable>
+
+      <EditTodo />
       </Screen>
   )
 }

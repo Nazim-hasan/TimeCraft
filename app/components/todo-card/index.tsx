@@ -13,8 +13,11 @@ import {
 import {images} from 'theme/images';
 
 const TodoCard = () => {
+  const handleCardPress = () => {
+    console.log('first card')
+  }
   return (
-    <TodoCardContainer>
+    <TodoCardContainer onPress={handleCardPress}>
       <CardWrapper>
         <ImageContainer>
           <TaskImage source={images.IntroImage1} resizeMode="stretch" />

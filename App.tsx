@@ -5,6 +5,8 @@ import AppScreen from './app/layout/AppScreen/AppScreen';
 import Navigation from './app/navigation/navigator/Navigator';
 import {StateProvider} from './app/services/auth/contexts';
 import {RecoilRoot} from 'recoil';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 
 const App = () => {
   const navTheme = {
@@ -16,15 +18,19 @@ const App = () => {
   };
 
   return (
-    <RecoilRoot>
-      <NavigationContainer ref={navigationRef}>
-        <StateProvider>
-          <AppScreen>
-            <Navigation theme={navTheme} />
-          </AppScreen>
-        </StateProvider>
-      </NavigationContainer>
-    </RecoilRoot>
+    <GestureHandlerRootView>
+      <RecoilRoot>
+        <NavigationContainer ref={navigationRef}>
+          <StateProvider>
+            <AppScreen>
+              <BottomSheetModalProvider>
+                <Navigation theme={navTheme} />
+              </BottomSheetModalProvider>
+            </AppScreen>
+          </StateProvider>
+        </NavigationContainer>
+      </RecoilRoot>
+    </GestureHandlerRootView>
   );
 };
 

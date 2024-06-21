@@ -1,15 +1,24 @@
-import {StyleSheet} from 'react-native';
-import React from 'react';
-import {useAuthFunction} from 'services/auth/hooks';
+import React, { useCallback, useRef } from 'react';
+
 import {Screen} from 'layout/shared/screen/Screen';
 import Greeting from 'components/greeting';
 import {commonStyles} from 'libs/shared/ui/styleSheet';
-import {metrics} from 'theme/metrics';
 import TodoSection from 'components/Todos';
 import { HomeScreenStyles } from './Styled';
+import EditTodo from 'components/EditTodo';
+import CustomBottomSheet, { BottomSheetForwardRefType } from 'components/BottomSheet/custom-bottom-sheet';
+import Text from 'components/shared/text/Text';
 
 const HomeScreen = () => {
-  const {handleLogout} = useAuthFunction();
+
+  const customSheetRef = useRef<BottomSheetForwardRefType>(null);
+  const handlePresentModalPress = useCallback(() => {
+    customSheetRef?.current?.activateSheet();
+  }, []);
+  const onCloseSheet = () => {
+    customSheetRef?.current?.closeSheet();
+  };
+
   return (
     <Screen
       preset="fixed"
@@ -18,9 +27,15 @@ const HomeScreen = () => {
       stickyHeaderIndices={[1]}
       themeName="white"
       bounces={false}>
-      <Greeting />
+      <Greeting onPressAdd={handlePresentModalPress}/>
 
       <TodoSection />
+
+      <CustomBottomSheet ref={customSheetRef}>
+        <Text>Go</Text>
+        {/* <BrandDetails onCloseSheet={onCloseSheet} brand={item} /> */}
+      </CustomBottomSheet>
+
     </Screen>
   );
 };

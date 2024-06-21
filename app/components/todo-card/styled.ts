@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import { colors } from 'theme/colors';
 import { metrics } from 'theme/metrics';
 
-export const TodoCardContainer = styled.View`
+export const TodoCardContainer = styled.Pressable`
   alignItems: center;
   backgroundColor: #fff;
   marginVertical: 10px;

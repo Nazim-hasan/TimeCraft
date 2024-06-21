@@ -13,6 +13,10 @@ export const commonStyles = StyleSheet.create({
     flexGrow: 1,
     paddingBottom: 100,
   },
+  lottieLgContainer: {
+    width: wp(45),
+    height: hp(45),
+  },
   lottieContainer: {
     width: wp(16),
     height: hp(16),
