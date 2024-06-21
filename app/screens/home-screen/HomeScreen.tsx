@@ -5,9 +5,8 @@ import Greeting from 'components/greeting';
 import {commonStyles} from 'libs/shared/ui/styleSheet';
 import TodoSection from 'components/Todos';
 import { HomeScreenStyles } from './Styled';
-import EditTodo from 'components/EditTodo';
 import CustomBottomSheet, { BottomSheetForwardRefType } from 'components/BottomSheet/custom-bottom-sheet';
-import Text from 'components/shared/text/Text';
+import TodoForm from 'components/todo-form/todo-form';
 
 const HomeScreen = () => {
 
@@ -32,8 +31,7 @@ const HomeScreen = () => {
       <TodoSection />
 
       <CustomBottomSheet ref={customSheetRef}>
-        <Text>Go</Text>
-        {/* <BrandDetails onCloseSheet={onCloseSheet} brand={item} /> */}
+        <TodoForm />
       </CustomBottomSheet>
 
     </Screen>
