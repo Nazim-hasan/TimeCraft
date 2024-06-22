@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import RNDatePicker from 'react-native-date-picker';
 
-import {Container, DateText} from './styled';
+import {Container} from './styled';
 import {IDatePickerProps} from './types';
-import Button from 'components/shared/button/Botton';
 
 const DatePicker = ({
   value,
@@ -23,11 +22,10 @@ const DatePicker = ({
 
   return (
     <Container>
-      {PickerComponent && (
+      {PickerComponent &&
         React.cloneElement(PickerComponent, {
           onPress: triggerPicker,
-        })
-      )}
+        })}
       <RNDatePicker
         modal
         open={open}

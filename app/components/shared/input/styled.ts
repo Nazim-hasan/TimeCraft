@@ -55,11 +55,10 @@ export const LabelContainer = styled.View<ViewStyle>`
 export const TextInputStyled = styled(TextInput)`
   flex: 1;
   font-size: 12px;
-  padding-left: ${(isRegistrationField) => isRegistrationField ? 1 : 5}px;
+  padding-left: 5px;
   margin-left: 5px;
   margin-right: 25px;
-  color: ${({ theme, color }) => color || colors.darkGray};
-  
+  color: ${({ color }) => color || colors.darkGray};
   text-align: left;
 `;
 

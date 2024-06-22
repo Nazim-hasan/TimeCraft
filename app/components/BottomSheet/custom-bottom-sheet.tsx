@@ -39,7 +39,7 @@ const CustomBottomSheet = React.forwardRef<
   // variables
   const snapPoints: SnapPoint[] = useMemo(() => {
     if (snapPointArr) return snapPointArr;
-    return ['55%', '75%', '90%'];
+    return ['60%', '75%', '90%'];
   }, [snapPointArr]);
 
   // callbacks
@@ -115,7 +115,7 @@ const CustomBottomSheet = React.forwardRef<
           style={{
             marginTop: metrics.spacing.s,
           }}>
-          {title ? <Text preset="body">{title}</Text> : null}
+          {title ? <Text preset="body" centered>{title}</Text> : null}
           <View style={{paddingHorizontal: metrics.spacing.xl}}>
             {children}
           </View>

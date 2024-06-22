@@ -2,17 +2,22 @@ import React from 'react';
 import {FormProvider, useForm} from 'react-hook-form';
 
 import {addTodoFormDefaultValues} from 'libs/shared/mocks/todo.mock';
-import { TodoFormContainer, todoFormStyles} from './todo-form.styled';
+import {TodoFormContainer, todoFormStyles} from './todo-form.styled';
 import {FormInputField} from 'components/shared/FormComponents';
 import {colors} from 'theme/colors';
 import {todoFieldNames} from 'libs/shared/types/enums/todo.enums';
 
 import {FormDatePicker} from 'components/shared/FormComponents/FormDatePicker';
+import FormImagePicker from 'components/shared/FormComponents/FormImagePicker';
+import Button from 'components/shared/button/Botton';
 
 const TodoForm = () => {
   const addTodoForm = useForm({
     defaultValues: addTodoFormDefaultValues,
     mode: 'onChange',
+  });
+  const handleSubmit = addTodoForm.handleSubmit(data => {
+    console.log('data', data);
   });
   return (
     <FormProvider {...addTodoForm}>
@@ -53,7 +58,15 @@ const TodoForm = () => {
           fieldName={todoFieldNames.dueDate}
           required
         />
+        <FormImagePicker fieldName={todoFieldNames.coverImage} />
       </TodoFormContainer>
+      <Button
+        title="Submit"
+        onPress={handleSubmit}
+        customStyles={{
+          marginVertical: 20,
+        }}
+      />
     </FormProvider>
   );
 };
