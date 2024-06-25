@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback, useRef} from 'react';
 import {
   CardStyles,
   CardWrapper,
@@ -11,13 +11,17 @@ import {
   TodoCardContainer,
 } from './styled';
 import {images} from 'theme/images';
+import CustomBottomSheet, {BottomSheetForwardRefType} from 'components/BottomSheet/custom-bottom-sheet';
+import TaskDetails from 'components/task-details';
 
 const TodoCard = () => {
-  const handleCardPress = () => {
-    console.log('first card')
-  }
+  const customSheetRef = useRef<BottomSheetForwardRefType>(null);
+  const handlePresentModalPress = useCallback(() => {
+    customSheetRef?.current?.activateSheet();
+  }, []);
+
   return (
-    <TodoCardContainer onPress={handleCardPress}>
+    <TodoCardContainer onPress={handlePresentModalPress}>
       <CardWrapper>
         <ImageContainer>
           <TaskImage source={images.IntroImage1} resizeMode="stretch" />
@@ -28,6 +32,9 @@ const TodoCard = () => {
           <Note customStyles={CardStyles.title}>Check with Kim & Alex</Note>
         </InfoContainer>
       </CardWrapper>
+      <CustomBottomSheet ref={customSheetRef} title="Confirm Friday night" >
+        <TaskDetails />
+      </CustomBottomSheet>
     </TodoCardContainer>
   );
 };

@@ -1,18 +1,16 @@
 import * as React from "react"
-import Svg, { Defs, ClipPath, Path, G } from "react-native-svg"
+import Svg, { Defs, ClipPath, Path, G, SvgProps } from "react-native-svg"
 
-function TrashIcon(props) {
+function TrashIcon(props: SvgProps) {
   return (
     <Svg
-      xmlns="http://www.w3.org/2000/svg"
       width={24}
       height={24}
       viewBox="0 0 682.667 682.667"
-      enableBackground="new 0 0 512 512"
       {...props}
     >
       <Defs>
-        <ClipPath id="a" clipPathUnits="userSpaceOnUse">
+        <ClipPath id="a">
           <Path d="M0 512h512V0H0z" data-original="#000000" />
         </ClipPath>
       </Defs>

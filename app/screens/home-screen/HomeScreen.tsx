@@ -15,9 +15,6 @@ const HomeScreen = () => {
   const handlePresentModalPress = useCallback(() => {
     customSheetRef?.current?.activateSheet();
   }, []);
-  const onCloseSheet = () => {
-    customSheetRef?.current?.closeSheet();
-  };
 
   return (
     <Screen
