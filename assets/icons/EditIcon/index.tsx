@@ -1,19 +1,12 @@
 import * as React from "react";
-import Svg, { G, Path } from "react-native-svg";
-const EditIcon = (props) => (
+import Svg, { G, Path, SvgProps } from "react-native-svg";
+export const EditIcon = (props: SvgProps) => (
   <Svg
-    xmlns="http://www.w3.org/2000/svg"
-    xmlnsXlink="http://www.w3.org/1999/xlink"
-    width={512}
-    height={512}
+    width={21}
+    height={21}
     x={0}
     y={0}
     viewBox="0 0 381.534 381"
-    style={{
-      enableBackground: "new 0 0 512 512",
-    }}
-    xmlSpace="preserve"
-    className=""
     {...props}
   >
     <G>
@@ -22,16 +15,13 @@ const EditIcon = (props) => (
         fill="#000000"
         opacity={1}
         data-original="#000000"
-        className=""
       />
       <Path
         d="M156.367 178.344 302.38 32.328l47.09 47.09-146.012 146.016zM132.543 249.258l52.039-14.414-37.625-37.625zM362.488 7.578c-9.77-9.746-25.586-9.746-35.355 0l-10.606 10.606 47.09 47.09 10.606-10.606c9.75-9.77 9.75-25.586 0-35.355zm0 0"
         fill="#000000"
         opacity={1}
         data-original="#000000"
-        className=""
       />
     </G>
   </Svg>
 );
-export default EditIcon;

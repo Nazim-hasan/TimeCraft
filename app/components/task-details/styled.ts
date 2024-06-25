@@ -22,4 +22,5 @@ export const TaskDescription = styled.Text`
 export const BottomButtonWrapper = styled.View`
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 20px;
 `
