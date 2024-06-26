@@ -12,7 +12,6 @@ export const BannerImage = styled.Image`
 `;
 export const DueDate = styled.Text`
   font-size: 12px;
-  margin-top: -15px;
   margin-vertical: 5px;
 `;
 

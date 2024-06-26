@@ -23,6 +23,10 @@ export const TodoCard = ({task}: ITaskProps) => {
     customSheetRef?.current?.activateSheet();
   }, []);
 
+  const handleDismissModalPress = useCallback(() => {
+    customSheetRef?.current?.closeSheet();
+  }, []);
+
   return (
     <TodoCardContainer onPress={handlePresentModalPress}>
       <CardWrapper>
@@ -45,7 +49,7 @@ export const TodoCard = ({task}: ITaskProps) => {
         </InfoContainer>
       </CardWrapper>
       <CustomBottomSheet ref={customSheetRef} title={task.title}>
-        <TaskDetails taskDetails={task}/>
+        <TaskDetails taskDetails={task} handleSheetClose={handleDismissModalPress}/>
       </CustomBottomSheet>
     </TodoCardContainer>
   );

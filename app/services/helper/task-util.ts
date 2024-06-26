@@ -1,6 +1,7 @@
+import { taskStatuses } from "libs/shared/types/enums/todo.enums";
 import { ITask } from "libs/shared/types/interfaces/task.interface";
 
-export const modifyTask = (taskList: ITask[], id: string, status: string) => {
+export const modifyTask = (taskList: ITask[], id: string, status: taskStatuses) => {
   return taskList.map(task => {
     if (task.id === id) {
       return {

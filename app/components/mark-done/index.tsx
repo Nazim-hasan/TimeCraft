@@ -15,7 +15,7 @@ import {IMarkProps} from './types';
 import {taskStatuses} from 'libs/shared/types/enums/todo.enums';
 
 const MarkDone = ({id}: IMarkProps) => {
-  const changeTaskStatus = async (status: string) => {
+  const changeTaskStatus = async (status: taskStatuses) => {
     const taskList = await getTaskListFromDB();
     storeNewTaskToDB(modifyTask(taskList, id, status));
   };
