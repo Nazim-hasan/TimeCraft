@@ -8,10 +8,12 @@ import {
   Container,
   InputContainer,
   Label,
+  RemoveIconWrapper,
 } from './styled';
 import {getDocumentFile} from 'libs/shared/file';
 import {PickDocumentType} from 'libs/shared/types/enums/common.enum';
 import {Asset} from 'react-native-image-picker';
+import {CloseIcon} from 'assets/icons/Close';
 
 const ImagePicker = ({value, onSelect}: IImagePickerProps) => {
   const [selectedImage, setSelectedImage] = useState<void | Asset>();
@@ -20,11 +22,18 @@ const ImagePicker = ({value, onSelect}: IImagePickerProps) => {
     setSelectedImage(result);
     result && onSelect(result.uri);
   };
+  const handleRemovePhoto = () => {
+    setSelectedImage(undefined);
+    onSelect(undefined);
+  };
 
   return (
     <Container>
       {selectedImage ? (
         <ChoosenPhotoWrapper>
+          <RemoveIconWrapper onPress={handleRemovePhoto}>
+            <CloseIcon />
+          </RemoveIconWrapper>
           <ChoosenPhoto
             source={{
               uri: selectedImage.uri,

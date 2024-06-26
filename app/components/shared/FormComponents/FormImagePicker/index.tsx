@@ -5,7 +5,8 @@ import ImagePicker from 'components/ImagePicker';
 import { IFormImagePickerProps } from './types';
 
 const FormImagePicker = ({
-  fieldName
+  fieldName,
+  rules
 }: IFormImagePickerProps) => {
 
   const {control, formState} = useFormContext();
@@ -14,7 +15,7 @@ const FormImagePicker = ({
       render={({field}) => (
         <ImagePicker
           value={field.value}
-          onSelect={(value: Date) => {
+          onSelect={(value) => {
             field.onChange(value);
             field.onBlur();
           }}
@@ -22,9 +23,7 @@ const FormImagePicker = ({
       )}
       control={control}
       name={fieldName}
-      rules={{
-        required: true,
-      }}
+      rules={rules}
     />
     
   )

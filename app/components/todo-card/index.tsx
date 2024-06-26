@@ -17,7 +17,7 @@ import TaskDetails from 'components/task-details';
 import {ITaskProps} from './types';
 import {format} from 'date-fns';
 
-const TodoCard = ({task}: ITaskProps) => {
+export const TodoCard = ({task}: ITaskProps) => {
   const customSheetRef = useRef<BottomSheetForwardRefType>(null);
   const handlePresentModalPress = useCallback(() => {
     customSheetRef?.current?.activateSheet();
@@ -51,4 +51,3 @@ const TodoCard = ({task}: ITaskProps) => {
   );
 };
 
-export default TodoCard;

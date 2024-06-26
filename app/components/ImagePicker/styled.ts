@@ -19,8 +19,15 @@ export const Label = styled.Text`
   margin-bottom: 5px;
 `;
 export const ChoosenPhoto = styled.Image`
-  width: 100px;
+  width: 100%;
   height: 100px;
   border-radius: 5px;
   margin-top: 10px;
+`;
+export const RemoveIconWrapper = styled.Pressable`
+  position: absolute;
+  right: -5px;
+  top: 5px;
+  padding: 1px;
+  z-index: 1;
 `;

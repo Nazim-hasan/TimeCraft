@@ -12,6 +12,7 @@ import {
   RemoveIconWrapper,
 } from './styled';
 import {IMarkProps} from './types';
+import {taskStatuses} from 'libs/shared/types/enums/todo.enums';
 
 const MarkDone = ({id}: IMarkProps) => {
   const changeTaskStatus = async (status: string) => {
@@ -21,10 +22,10 @@ const MarkDone = ({id}: IMarkProps) => {
 
   return (
     <MarkDoneContainer>
-      <DoneWrapper onPress={() => changeTaskStatus('completed')}>
+      <DoneWrapper onPress={() => changeTaskStatus(taskStatuses.done)}>
         <MarkAsDone>Mark as done</MarkAsDone>
       </DoneWrapper>
-      <RemoveIconWrapper onPress={() => changeTaskStatus('deleted')}>
+      <RemoveIconWrapper onPress={() => changeTaskStatus(taskStatuses.removed)}>
         <TrashIcon color={colors.danger} />
       </RemoveIconWrapper>
     </MarkDoneContainer>

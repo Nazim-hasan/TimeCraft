@@ -12,6 +12,7 @@ interface ButtonProps {
   inactiveText?: boolean;
   smallTitle?: boolean;
   icon?: JSX.Element;
+  disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -21,7 +22,11 @@ const Button: React.FC<ButtonProps> = ({
   smallTitle,
   icon,
   inactiveText,
+  disabled
 }) => {
+  const onPressHandler = () => {
+    !disabled && onPress();
+  }
   return (
     <TouchableOpacity
       style={[
@@ -32,8 +37,12 @@ const Button: React.FC<ButtonProps> = ({
           alignItems: 'center',
           justifyContent: 'center',
         },
+        disabled && {
+          backgroundColor: colors.blueGray,
+          opacity: 1,
+        },
       ]}
-      onPress={onPress}>
+      onPress={onPressHandler}>
       {icon && icon}
       <Text
         preset={smallTitle ? 'MediumSm' : 'SemiBoldLg'}

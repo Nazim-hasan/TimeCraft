@@ -1,57 +1,57 @@
 import React from 'react';
 import {FormProvider, useForm} from 'react-hook-form';
+import {useRecoilRefresher_UNSTABLE} from 'recoil';
 
 import {addTodoFormDefaultValues} from 'libs/shared/mocks/todo.mock';
 import {TodoFormContainer, todoFormStyles} from './todo-form.styled';
 import {FormInputField} from 'components/shared/FormComponents';
 import {colors} from 'theme/colors';
-import {todoFieldNames} from 'libs/shared/types/enums/todo.enums';
+import {taskStatuses, todoFieldNames} from 'libs/shared/types/enums/todo.enums';
 
 import {FormDatePicker} from 'components/shared/FormComponents/FormDatePicker';
 import FormImagePicker from 'components/shared/FormComponents/FormImagePicker';
 import Button from 'components/shared/button/Botton';
-import { getTaskListFromDB, storeNewTaskToDB } from 'storage/asyncStore';
+import {getTaskListFromDB, storeNewTaskToDB} from 'storage/asyncStore';
+import {todoSelector} from 'libs/shared/data-access/task/task.selector';
+import {ITask} from 'libs/shared/types/interfaces/task.interface';
+import {Task} from 'services/helper/task-util';
 
-const TodoForm = ({handleSheetClose}) => {
+import {TodoFormProps} from './todo-form.types';
+
+const TodoForm = ({handleSheetClose}: TodoFormProps) => {
+  const refreshTodoList = useRecoilRefresher_UNSTABLE(
+    todoSelector(taskStatuses.todo),
+  );
+
   const addTodoForm = useForm({
     defaultValues: addTodoFormDefaultValues,
     mode: 'onChange',
   });
   const handleSubmit = addTodoForm.handleSubmit(data => {
-    console.log('data', data);
     const payload = {
-      ...data, 
-      status: 'todo',
-      id: Math.random().toString(36).substring(7)
-    }
-    storeTaskDB(payload)
+      ...data,
+      status: taskStatuses.todo,
+      id: Math.random().toString(36).substring(7),
+    };
+    storeTaskDB(payload).then(() => {
+      refreshTodoList();
+      reset();
+      handleSheetClose();
+    });
   });
 
   const {reset} = addTodoForm;
 
-
-  const storeTaskDB = async (value: any) => {
-    let tempTaskList = [];
+  const storeTaskDB = async (value: ITask) => {
+    let tempTaskList: ITask[] = [];
     try {
       let previousTaskList = await getTaskListFromDB();
       if (previousTaskList !== null) {
-        tempTaskList = previousTaskList; // you could do some additional checks to make sure it is an array
+        tempTaskList = previousTaskList;
       }
       tempTaskList.push(value);
       storeNewTaskToDB(tempTaskList);
-      // dispatch({
-      //   type: "SET_REFRESH",
-      //   refresh: !refresh
-      // })
-      // showMessage({
-      //   message: 'Brand Added',
-      //   type: 'success',
-      // });
-      reset();
-
-      handleSheetClose(); // close the bottom sheet
     } catch (error) {
-      // Error saving data
       console.log(error);
     }
   };
@@ -69,6 +69,7 @@ const TodoForm = ({handleSheetClose}) => {
           placeholder={'Please enter title'}
           rules={{
             required: true,
+            validate: Task.isTitleValid,
           }}
           autoCapitalize="sentences"
           autoCorrect={false}
@@ -86,6 +87,7 @@ const TodoForm = ({handleSheetClose}) => {
           placeholder={'Please enter description'}
           rules={{
             required: true,
+            validate: Task.isDescriptionValid,
           }}
           autoCapitalize="sentences"
           autoCorrect={false}
@@ -97,14 +99,19 @@ const TodoForm = ({handleSheetClose}) => {
           fieldName={todoFieldNames.dueDate}
           required
         />
-        <FormImagePicker fieldName={todoFieldNames.coverImage} />
+        <FormImagePicker
+          fieldName={todoFieldNames.coverImage}
+          rules={{
+            required: true,
+            validate: Task.isCoverImageValid,
+          }}
+        />
       </TodoFormContainer>
       <Button
         title="Submit"
         onPress={handleSubmit}
-        customStyles={{
-          marginVertical: 20,
-        }}
+        customStyles={todoFormStyles.buttonStyle}
+        disabled={!addTodoForm.formState.isValid}
       />
     </FormProvider>
   );

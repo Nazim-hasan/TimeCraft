@@ -1,12 +1,18 @@
+import { taskStatuses } from "../enums/todo.enums";
+
 export interface ITask {
   id: string;
   title: string;
   description: string;
   dueDate: Date;
   coverImage: string;
-  status: 'todo' | 'completed' | 'deleted';
+  status: taskStatuses;
 }
 export interface ITaskResponse {
     index: number;
     item: ITask;
+}
+
+export interface ITaskInfo {
+  rowData: ITaskResponse
 }

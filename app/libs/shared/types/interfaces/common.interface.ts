@@ -37,3 +37,9 @@ export interface IInputProps extends TextInputProps {
   bottomSheetInput?: boolean;
   withoutEditText?: boolean;
 }
+
+export interface ILoadableValue<T> {
+  isLoading: boolean;
+  isError: boolean;
+  data: T;
+}

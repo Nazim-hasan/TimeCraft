@@ -9,6 +9,7 @@ export const TodoCardContainer = styled.Pressable`
   backgroundColor: #fff;
   marginVertical: 10px;
   borderRadius: 10px;
+  padding: ${metrics.spacing.s}px;
 `;
 
 export const CardWrapper = styled.View`
@@ -21,13 +22,14 @@ export const ImageContainer = styled.View`
   flex: 0.4;
   width: 100px;
   height: 100px;
+  margin-right: ${metrics.spacing.s}px;
+  margin-top: ${metrics.spacing.xs}px;
 `;
 
 export const TaskImage = styled.Image`
   width: 100px;
-  height: 110px;
+  height: 102px;
   borderRadius: 8px;
-  margin-vertical: ${metrics.spacing.s}px;
 `;
 
 export const InfoContainer = styled.View`
