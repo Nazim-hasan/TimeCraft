@@ -1,8 +1,8 @@
 import EmptyList from 'components/empty-list';
 import MarkDone from 'components/mark-done';
-import React from 'react';
+import React, { useCallback } from 'react';
 import {SwipeListView} from 'react-native-swipe-list-view';
-import {useRecoilRefresher_UNSTABLE} from 'recoil';
+import {useRecoilRefresher_UNSTABLE, useRecoilState} from 'recoil';
 import {ITaskListProps} from './types';
 import {RefreshControl} from 'react-native';
 import {todoSelector} from 'libs/shared/data-access/task/task.selector';
@@ -15,11 +15,11 @@ const MySwipeListView = ({status}: ITaskListProps) => {
   const refreshTodoList = useRecoilRefresher_UNSTABLE(todoSelector(status));
 
   const renderItem = (rowData: ITaskResponse) => (
-    <TodoCard task={rowData.item} />
+    <TodoCard task={rowData.item} onRefresh={refreshTodoList}/>
   );
 
   const renderHiddenItem = (rowData: ITaskResponse) => (
-    <MarkDone id={rowData.item.id} />
+    <MarkDone id={rowData.item.id} onRefresh={refreshTodoList}/>
   );
   const keyExtractor = (item: ITaskResponse) => item?.item?.id;
   const refreshControl = (

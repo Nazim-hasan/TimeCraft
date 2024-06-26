@@ -18,14 +18,15 @@ import {ITaskProps, TRoute} from './types';
 import {format} from 'date-fns';
 import {useFocusEffect, useRoute} from '@react-navigation/native';
 
-export const TodoCard = ({task}: ITaskProps) => {
+export const TodoCard = ({task, ...props}: ITaskProps) => {
   const route = useRoute<TRoute>();
-  const {savedReminder} = route.params || {};
+  let {savedReminder} = route.params || {};
 
   useFocusEffect(
     useCallback(() => {
       if (savedReminder?.id === task?.id) {
         handlePresentModalPress();
+        savedReminder = undefined;
       }
     }, [savedReminder]),
   );
@@ -65,6 +66,7 @@ export const TodoCard = ({task}: ITaskProps) => {
         title={task.title}
         snapPointArr={['50%']}>
         <TaskDetails
+          {...props}
           taskDetails={task}
           handleSheetClose={handleDismissModalPress}
         />
