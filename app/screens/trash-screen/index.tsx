@@ -1,10 +1,9 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import React, {Fragment} from 'react';
 import {Screen} from 'layout/shared/screen/Screen';
 import {commonStyles} from 'libs/shared/ui/styleSheet';
-import {Message, TrashScreenStyles} from './styled';
-import LottieView from 'lottie-react-native';
-import {animatedIcons} from 'theme/animated-icons';
+import {TrashScreenStyles} from './styled';
+import TodoList from 'components/todo-list';
+import {taskStatuses} from 'libs/shared/types/enums/todo.enums';
 
 const TrashScreen = () => {
   return (
@@ -15,13 +14,9 @@ const TrashScreen = () => {
       stickyHeaderIndices={[1]}
       themeName="white"
       bounces={false}>
-      <LottieView
-        style={commonStyles.lottieLgContainer}
-        source={animatedIcons.empty}
-        autoPlay
-        loop
-      />
-      <Message>Nothing's found in Trash</Message>
+      <Fragment>
+        <TodoList status={taskStatuses.removed} />
+      </Fragment>
     </Screen>
   );
 };

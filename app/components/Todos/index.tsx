@@ -5,6 +5,7 @@ import {TodoSwitchTabOptions} from './todo-options';
 import {useRecoilValue} from 'recoil';
 import {textAtom} from 'libs/shared/data-access/atoms';
 import TodoList from 'components/todo-list';
+import { taskStatuses } from 'libs/shared/types/enums/todo.enums';
 
 const TodoSection = () => {
   const tabOption = useRecoilValue(textAtom({group: TableType.todo}));
@@ -20,9 +21,9 @@ const TodoSection = () => {
       />
 
       {tabOption === TableKeys.todo ? (
-        <TodoList listType={'todo'} />
+        <TodoList status={taskStatuses.todo} />
       ) : (
-        <TodoList listType={'completed'} />
+        <TodoList status={taskStatuses.done} />
       )}
     </React.Fragment>
   );

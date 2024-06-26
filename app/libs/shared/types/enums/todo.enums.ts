@@ -5,3 +5,9 @@ export enum todoFieldNames {
   coverImage = 'coverImage',
   status = 'status'
 }
+
+export enum taskStatuses {
+  todo = 'todo',
+  done = 'done',
+  removed = 'removed'
+}

@@ -11,8 +11,9 @@ import React, {useCallback} from 'react';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import {useRecoilState} from 'recoil';
 import {getTaskListFromDB} from 'storage/asyncStore';
+import { ITaskListProps } from './types';
 
-const MySwipeListView = ({listType}) => {
+const MySwipeListView = ({status}: ITaskListProps) => {
   const [todoList, setTodoList] = useRecoilState(taskAtom);
 
   const renderItem = (rowData: ITaskResponse) => (
@@ -24,7 +25,7 @@ const MySwipeListView = ({listType}) => {
   const getPrev = async () => {
     const storedTaskList = await getTaskListFromDB();
     const todoTaskList = storedTaskList.filter(
-      (task: ITask) => task.status === listType,
+      (task: ITask) => task.status === status,
     );
     setTodoList(todoTaskList);
   };
@@ -32,7 +33,7 @@ const MySwipeListView = ({listType}) => {
   useFocusEffect(
     useCallback(() => {
       getPrev();
-    }, [listType]),
+    }, [status]),
   );
 
   return (
