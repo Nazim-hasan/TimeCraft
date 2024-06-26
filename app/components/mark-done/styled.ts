@@ -8,5 +8,6 @@ export const MarkDoneContainer = styled.View`
 `;
 export const MarkAsDone = styled.Text`
 `;
-export const Remove = styled.Text`
-`;
+
+export const RemoveIconWrapper = styled.Pressable``
+export const DoneWrapper = styled.Pressable``

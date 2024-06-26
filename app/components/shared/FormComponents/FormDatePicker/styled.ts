@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 import { colors } from "theme/colors";
 
-export const PickerContainer = styled.Pressable`
+export const PickerContainer = styled.View`
   border-width: 0.8px;
   border-radius: 5px;
   border-color: ${colors.lightGray};
@@ -14,3 +14,4 @@ export const PlaceholderText = styled.Text`
   margin-bottom: 5px;
   margin-top: -5px;
 `;
+export const DatePickerWrapper = styled.Pressable``

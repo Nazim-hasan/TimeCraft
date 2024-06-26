@@ -3,7 +3,7 @@ import { Asset } from "react-native-image-picker";
 
 export interface IImagePickerProps {
   value: Promise<Asset | void> ;
-  onSelect: (value: Promise<Asset | void>) => void;
+  onSelect: (value?: string) => void;
   containerStyle?: ViewStyle;
   PickerComponent?: React.ReactElement;
 }

@@ -13,11 +13,12 @@ import {getDocumentFile} from 'libs/shared/file';
 import {PickDocumentType} from 'libs/shared/types/enums/common.enum';
 import {Asset} from 'react-native-image-picker';
 
-const ImagePicker = ({value, onSelect, PickerComponent}: IImagePickerProps) => {
+const ImagePicker = ({value, onSelect}: IImagePickerProps) => {
   const [selectedImage, setSelectedImage] = useState<void | Asset>();
   const handleSelectPhoto = async () => {
     const result = await getDocumentFile(PickDocumentType.IMAGE_LIBRARY);
     setSelectedImage(result);
+    result && onSelect(result.uri);
   };
 
   return (

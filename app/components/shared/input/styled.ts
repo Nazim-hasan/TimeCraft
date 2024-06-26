@@ -8,6 +8,7 @@ import {
   IInputLabelStyle,
 } from './types';
 import { colors } from 'theme/colors';
+import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 
 export const Container = styled.View`
   opacity: ${({ disabled }: { disabled: boolean }) => (disabled ? 0.85 : 1)};
@@ -53,6 +54,15 @@ export const LabelContainer = styled.View<ViewStyle>`
 `;
 
 export const TextInputStyled = styled(TextInput)`
+  flex: 1;
+  font-size: 12px;
+  padding-left: 5px;
+  margin-left: 5px;
+  margin-right: 25px;
+  color: ${({ color }) => color || colors.darkGray};
+  text-align: left;
+`;
+export const BottomInputStyled = styled(BottomSheetTextInput)`
   flex: 1;
   font-size: 12px;
   padding-left: 5px;

@@ -3,7 +3,12 @@ import {Controller, useFormContext} from 'react-hook-form';
 
 import {IFormDatePickerProps} from './types';
 import DatePicker from 'components/DatePicker';
-import {DateRangeText, PickerContainer, PlaceholderText} from './styled';
+import {
+  DatePickerWrapper,
+  DateRangeText,
+  PickerContainer,
+  PlaceholderText,
+} from './styled';
 import {format} from 'date-fns';
 
 export const FormDatePicker = ({
@@ -15,7 +20,7 @@ export const FormDatePicker = ({
   required,
 }: IFormDatePickerProps) => {
   const {control, formState} = useFormContext();
-
+  
   return (
     <Controller
       render={({field}) => (
@@ -29,7 +34,7 @@ export const FormDatePicker = ({
           rightIcon={rightIcon}
           containerStyle={containerStyle}
           PickerComponent={
-            <Fragment>
+            <DatePickerWrapper>
               {placeholderText && (
                 <PlaceholderText>
                   {placeholderText}
@@ -41,7 +46,7 @@ export const FormDatePicker = ({
                   {format(field.value, 'HH:MM dd MMM yyyy')}
                 </DateRangeText>
               </PickerContainer>
-            </Fragment>
+            </DatePickerWrapper>
           }
         />
       )}

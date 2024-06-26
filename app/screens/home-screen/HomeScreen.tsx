@@ -15,6 +15,9 @@ const HomeScreen = () => {
   const handlePresentModalPress = useCallback(() => {
     customSheetRef?.current?.activateSheet();
   }, []);
+  const handleDismissModalPress = useCallback(() => {
+    customSheetRef?.current?.closeSheet();
+  }, []);
 
   return (
     <Screen
@@ -29,7 +32,7 @@ const HomeScreen = () => {
       <TodoSection />
 
       <CustomBottomSheet ref={customSheetRef} title="Create new task" >
-        <TodoForm />
+        <TodoForm handleSheetClose={handleDismissModalPress}/>
       </CustomBottomSheet>
     </Screen>
   );

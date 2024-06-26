@@ -1,6 +1,7 @@
 export enum todoFieldNames {
-  title = 'email',
-  description = 'password',
+  title = 'title',
+  description = 'description',
   dueDate = 'dueDate',
   coverImage = 'coverImage',
+  status = 'status'
 }

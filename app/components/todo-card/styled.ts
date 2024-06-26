@@ -25,9 +25,9 @@ export const ImageContainer = styled.View`
 
 export const TaskImage = styled.Image`
   width: 100px;
-  height: 160px;
-  borderRadius: 10px;
-
+  height: 110px;
+  borderRadius: 8px;
+  margin-vertical: ${metrics.spacing.s}px;
 `;
 
 export const InfoContainer = styled.View`
@@ -42,7 +42,10 @@ export const Title = styled.Text`
   marginVertical: ${metrics.spacing.xs}px;
 
 `;
-export const Note = styled(Text)``;
+export const Note = styled.Text`
+  color: ${colors.lightGray};
+  marginVertical: ${metrics.spacing.xs}px;
+`;
 export const Time = styled(Text)``;
 export const FormateDate = styled(Text)``;
 

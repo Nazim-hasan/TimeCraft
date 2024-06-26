@@ -34,6 +34,6 @@ export interface IInputProps extends TextInputProps {
   isEditableIcon?: boolean;
   tooltipData?: (string | string[])[];
   labelFontSize?: number;
-  isRegistrationField?: boolean;
+  bottomSheetInput?: boolean;
   withoutEditText?: boolean;
 }

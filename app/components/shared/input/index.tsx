@@ -25,6 +25,7 @@ import {
   EditIconContainer,
   EditText,
   LabelContainer,
+  BottomInputStyled,
 } from './styled';
 
 import {IInputProps} from 'libs/shared/types/interfaces/common.interface';
@@ -37,7 +38,7 @@ import {EyeIcon} from 'assets/icons/Eye';
 import {LockGrayIcon} from 'assets/icons/LockGray';
 import {EditIcon} from 'assets/icons/EditIcon';
 import {textAtom} from 'libs/shared/data-access/atoms';
-import { colors } from 'theme/colors';
+import {colors} from 'theme/colors';
 
 export const Input = forwardRef<TextInput, IInputProps>(
   (
@@ -78,7 +79,7 @@ export const Input = forwardRef<TextInput, IInputProps>(
       isEditableIcon,
       tooltipData,
       labelFontSize,
-      isRegistrationField,
+      bottomSheetInput,
       ...restOfProps
     },
     ref,
@@ -132,7 +133,7 @@ export const Input = forwardRef<TextInput, IInputProps>(
       setIsSecureTextEntry(!isSecureTextEntry);
     };
 
-    const requiredMark = required && !isRegistrationField ? '*' : '';
+    const requiredMark = required ? '*' : '';
     const isError = Boolean(errorMessage) || Boolean(inputError);
 
     useFocusEffect(
@@ -152,9 +153,7 @@ export const Input = forwardRef<TextInput, IInputProps>(
                 <InputLabel
                   color={inputLabelColor}
                   inputLabelFontSize={labelFontSize}
-                  isRegistrationField={
-                    isRegistrationField
-                  }>{`${inputLabel}${requiredMark}`}</InputLabel>
+                  >{`${inputLabel}${requiredMark}`}</InputLabel>
               </LabelContainer>
             )}
 
@@ -165,21 +164,38 @@ export const Input = forwardRef<TextInput, IInputProps>(
               errorMessage={isError}
               style={inputContainerStyle}>
               {renderInputIcon && renderInputIcon(isFocused)}
-              <TextInputStyled
-                {...restOfProps}
-                value={value || inputValue}
-                onChangeText={handleInputChange}
-                onBlur={handeOnInputBlur}
-                onFocus={handleInputFocus}
-                onEndEditing={onEndEditing}
-                placeholderTextColor={placeholderTextColor}
-                autoCapitalize={autoCapitalize}
-                editable={!disabled}
-                style={inputStyle}
-                ref={ref}
-                secureTextEntry={isSecureTextEntry}
-                isRegistrationField={isRegistrationField}
-              />
+              {bottomSheetInput ? (
+                <BottomInputStyled
+                  {...restOfProps}
+                  value={value || inputValue}
+                  onChangeText={handleInputChange}
+                  onBlur={handeOnInputBlur}
+                  onFocus={handleInputFocus}
+                  onEndEditing={onEndEditing}
+                  placeholderTextColor={placeholderTextColor}
+                  autoCapitalize={autoCapitalize}
+                  editable={!disabled}
+                  style={inputStyle}
+                  ref={ref}
+                  secureTextEntry={isSecureTextEntry}
+                />
+              ) : (
+                <TextInputStyled
+                  {...restOfProps}
+                  value={value || inputValue}
+                  onChangeText={handleInputChange}
+                  onBlur={handeOnInputBlur}
+                  onFocus={handleInputFocus}
+                  onEndEditing={onEndEditing}
+                  placeholderTextColor={placeholderTextColor}
+                  autoCapitalize={autoCapitalize}
+                  editable={!disabled}
+                  style={inputStyle}
+                  ref={ref}
+                  secureTextEntry={isSecureTextEntry}
+                />
+              )}
+
               {isFieldEdited && (
                 <IconContainer width={45}>
                   <TouchableOpacity

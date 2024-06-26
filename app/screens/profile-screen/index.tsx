@@ -20,7 +20,6 @@ const ProfileScreen = () => {
           <Text>Logout</Text>
         </Pressable>
 
-      <EditTodo />
       </Screen>
   )
 }
