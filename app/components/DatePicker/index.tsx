@@ -14,7 +14,9 @@ const DatePicker = ({
   const [open, setOpen] = useState(false);
 
   const onDateConfirm = (newDate: Date) => {
-    onSelect(newDate);
+    const adjustedDate = new Date(newDate);
+    adjustedDate.setSeconds(0, 0);
+    onSelect(adjustedDate);
     triggerPicker();
   };
 

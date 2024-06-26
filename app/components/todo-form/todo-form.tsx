@@ -17,6 +17,7 @@ import {ITask} from 'libs/shared/types/interfaces/task.interface';
 import {Task} from 'services/helper/task-util';
 
 import {TodoFormProps} from './todo-form.types';
+import notificationUtil from 'services/helper/notification-util';
 
 const TodoForm = ({handleSheetClose}: TodoFormProps) => {
   const refreshTodoList = useRecoilRefresher_UNSTABLE(
@@ -37,6 +38,9 @@ const TodoForm = ({handleSheetClose}: TodoFormProps) => {
       refreshTodoList();
       reset();
       handleSheetClose();
+      const reminder = data.title;
+      const date = data.dueDate;
+      notificationUtil.scheduleNotification({reminder, date, id: payload.id});
     });
   });
 

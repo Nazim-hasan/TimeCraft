@@ -43,7 +43,7 @@ export const FormDatePicker = ({
               )}
               <PickerContainer>
                 <DateRangeText>
-                  {format(field.value, 'HH:MM dd MMM yyyy')}
+                  {format(field.value, 'dd MMM yyyy HH:m:ss')}
                 </DateRangeText>
               </PickerContainer>
             </DatePickerWrapper>

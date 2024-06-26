@@ -17,6 +17,8 @@ import { useRecoilRefresher_UNSTABLE, useRecoilValue } from 'recoil';
 import { todoSelector } from 'libs/shared/data-access/task/task.selector';
 import { TableType } from 'libs/shared/types/enums/table.enum';
 import { textAtom } from 'libs/shared/data-access/atoms';
+import { DoneIcon } from 'assets/icons/Done';
+import { colors } from 'theme/colors';
 
 const TaskDetails = ({taskDetails, handleSheetClose}: ITaskDetailsProps) => {
 
@@ -40,14 +42,17 @@ const TaskDetails = ({taskDetails, handleSheetClose}: ITaskDetailsProps) => {
         }}
       />
       <DueDate>
-        Due date: {format(taskDetails?.dueDate, 'HH:MM dd MMM yyyy')}
+        Due date: {format(taskDetails?.dueDate, 'K:mma dd MMM yyyy')}
       </DueDate>
       <TaskDescription>{taskDetails.description}</TaskDescription>
       <BottomButtonWrapper>
         <EditIcon onPress={() => {
           console.log('coming soon')
         }}/>
-        <TrashIcon onPress={() => {
+        <DoneIcon onPress={() => {
+          changeTaskStatus(taskStatuses.done);
+        }}/>
+        <TrashIcon color={colors.danger} onPress={() => {
           changeTaskStatus(taskStatuses.removed);
         }}/>
       </BottomButtonWrapper>
