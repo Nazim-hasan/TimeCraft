@@ -98,7 +98,7 @@ class Notifications {
 
       await notifee.createTriggerNotification(
         {
-          id: '1',
+          id,
           title: `🔔 Over due - ${reminder}`,
           body: 'Tap on it to check',
           android: {
@@ -106,6 +106,10 @@ class Notifications {
             pressAction: {
               id: 'default',
             },
+          },
+          ios: {
+            // iOS resource (.wav, aiff, .caf)
+            sound: 'local.wav',
           },
           data: {
             id: '1',
@@ -122,8 +126,10 @@ class Notifications {
     }
   }
 
-  public async cancelNotification() {
-    await notifee.cancelNotification('1');
+  public async cancelNotification(id: string) {
+    notifee.cancelNotification(id).then(() => {
+      console.log('notifcation removed', id)
+    });
   }
 }
 

@@ -16,9 +16,16 @@ import CustomBottomSheet, {
 import TaskDetails from 'components/task-details';
 import {ITaskProps, TRoute} from './types';
 import {format} from 'date-fns';
-import {useFocusEffect, useRoute} from '@react-navigation/native';
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
+import {navigate} from 'navigation';
+import {CommonRoutes} from 'libs/shared/types/enums';
+import {taskStatuses} from 'libs/shared/types/enums/todo.enums';
 
-export const TodoCard = ({task, ...props}: ITaskProps) => {
+export const TodoCard = ({task}: ITaskProps) => {
   const route = useRoute<TRoute>();
   let {savedReminder} = route.params || {};
 
@@ -26,7 +33,7 @@ export const TodoCard = ({task, ...props}: ITaskProps) => {
     useCallback(() => {
       if (savedReminder?.id === task?.id) {
         handlePresentModalPress();
-        savedReminder = undefined;
+        navigate(CommonRoutes.Home);
       }
     }, [savedReminder]),
   );
@@ -40,6 +47,7 @@ export const TodoCard = ({task, ...props}: ITaskProps) => {
     customSheetRef?.current?.closeSheet();
   }, []);
 
+  const isTaskRemoved = task?.status === taskStatuses.removed;
   return (
     <TodoCardContainer onPress={handlePresentModalPress}>
       <CardWrapper>
@@ -64,9 +72,8 @@ export const TodoCard = ({task, ...props}: ITaskProps) => {
       <CustomBottomSheet
         ref={customSheetRef}
         title={task.title}
-        snapPointArr={['50%']}>
+        snapPointArr={isTaskRemoved ? ['40%'] : ['50%']}>
         <TaskDetails
-          {...props}
           taskDetails={task}
           handleSheetClose={handleDismissModalPress}
         />
