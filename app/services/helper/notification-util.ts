@@ -1,12 +1,14 @@
 import notifee, {
+  AndroidCategory,
+  AndroidImportance,
   AuthorizationStatus,
   EventType,
   Notification,
   TimestampTrigger,
   TriggerType,
 } from '@notifee/react-native';
-import { CommonRoutes } from 'libs/shared/types/enums';
-import { navigate } from 'navigation';
+import {CommonRoutes} from 'libs/shared/types/enums';
+import {navigate} from 'navigation';
 
 class Notifications {
   constructor() {
@@ -47,8 +49,8 @@ class Notifications {
     const {data} = notification;
     console.log('Notification received: foreground', data);
     navigate(CommonRoutes.Home, {
-      savedReminder: data?.details
-    })
+      savedReminder: data?.details,
+    });
     // navigate('Detail', {savedReminder: data?.details});
   }
 
@@ -95,14 +97,23 @@ class Notifications {
         type: TriggerType.TIMESTAMP,
         timestamp: +date,
       };
-
+      // Create a channel (required for Android)
+      const channelId = await notifee.createChannel({
+        id: 'todoNotification',
+        name: 'todoNotification Channel',
+        importance: AndroidImportance.HIGH,
+        sound: 'hollow',
+        vibration: true,
+        vibrationPattern: [300, 500],
+      });
       await notifee.createTriggerNotification(
         {
           id,
           title: `🔔 Over due - ${reminder}`,
           body: 'Tap on it to check',
           android: {
-            channelId: 'reminder',
+            channelId,
+            importance: AndroidImportance.HIGH,
             pressAction: {
               id: 'default',
             },
@@ -128,7 +139,7 @@ class Notifications {
 
   public async cancelNotification(id: string) {
     notifee.cancelNotification(id).then(() => {
-      console.log('notifcation removed', id)
+      console.log('notification removed', id);
     });
   }
 }

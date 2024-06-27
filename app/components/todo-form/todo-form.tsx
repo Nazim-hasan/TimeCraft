@@ -35,9 +35,9 @@ const TodoForm = ({handleSheetClose}: TodoFormProps) => {
       id: Math.random().toString(36).substring(7),
     };
     storeTaskDB(payload).then(() => {
+      handleSheetClose();
       refreshTodoList();
       reset();
-      handleSheetClose();
       const reminder = data.title;
       const date = data.dueDate;
       notificationUtil.scheduleNotification({reminder, date, id: payload.id});

@@ -6,9 +6,6 @@ export interface IDatePickerProps {
   onSelect: (value: Date) => void;
   pickerTextTestID?: string;
   iconColor?: string;
-  minimumDate?: Date;
-  maximumDate?: Date;
   PickerComponent?: React.ReactElement;
-  rightIcon?: React.ReactNode;
   containerStyle?: ViewStyle;
 }

@@ -38,14 +38,7 @@ const LoginScreen = () => {
         themeName={colors.white}
         bounces={false}>
         <ScreenContent>
-          <Image
-            source={images.loginBanner}
-            style={{
-              height: '70%',
-              width: '100%',
-            }}
-            resizeMode="cover"
-          />
+          
           <Text
             centered
             customStyles={{

@@ -1,6 +1,7 @@
 import { removeData, storeData} from '../../../storage/asyncStore';
 import {showMessage} from 'react-native-flash-message';
 import { useStateValue } from './useStateValue';
+import notificationUtil from 'services/helper/notification-util';
 
 const useAuthFunction = () => {
   const [{user, token, appSettings}, dispatch] = useStateValue();
@@ -11,6 +12,7 @@ const useAuthFunction = () => {
       user: true,
     });
     storeData(value);
+    notificationUtil.checkPermissions();
   };
 
   const handleLogout = () => {
