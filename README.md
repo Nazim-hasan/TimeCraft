@@ -1,7 +1,10 @@
 # Time Craft
 A React Native App for tracking your daily task
 
-https://github.com/Nazim-hasan/TimeCraft/assets/77955141/b6c35530-4570-4cdc-81ad-38aa22b694fd
+
+
+https://github.com/Nazim-hasan/TimeCraft/assets/77955141/674b20b5-d4cc-4f4a-af25-4192177b7da1
+
 
 
 ## How to run application:
