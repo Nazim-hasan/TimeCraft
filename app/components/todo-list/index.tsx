@@ -26,7 +26,7 @@ const MySwipeListView = ({status}: ITaskListProps) => {
   );
 
   const renderItem = (rowData: ITaskResponse) => (
-    <TodoCard task={rowData.item} />
+    <TodoCard task={rowData.item} onRefresh={refreshTodoList}/>
   );
 
   const renderHiddenItem = (rowData: ITaskResponse) => (

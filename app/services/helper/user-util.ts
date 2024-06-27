@@ -8,8 +8,8 @@ export class User {
     return true;
   };
   public static isPasswordValid = (value: string) => {
-    if (!passwordRequirements?.every(item => item?.regex.test(value))) {
-      return 'Password does not meet the requirements';
+    if (value.length < 8) {
+      return 'Password must be at least 8 characters';
     }
     return true;
   };

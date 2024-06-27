@@ -25,9 +25,12 @@ export const getGreetingTime = (): string => {
     return 'Morning';
   } else if (currentHour >= 12 && currentHour < 17) {
     return 'Afternoon';
-  } else if (currentHour >= 17 && currentHour < 21) {
-    return 'Evening';
   } else {
-    return 'Night';
+    return 'Evening';
   }
 };
+
+export const getNameFromEmail = (email: string): string => {
+  const [name] = email.split('@');
+  return name;
+}

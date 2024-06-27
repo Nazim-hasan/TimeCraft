@@ -25,7 +25,7 @@ import {navigate} from 'navigation';
 import {CommonRoutes} from 'libs/shared/types/enums';
 import {taskStatuses} from 'libs/shared/types/enums/todo.enums';
 
-export const TodoCard = ({task}: ITaskProps) => {
+export const TodoCard = ({task, onRefresh}: ITaskProps) => {
   const route = useRoute<TRoute>();
   let {savedReminder} = route.params || {};
 
@@ -45,6 +45,7 @@ export const TodoCard = ({task}: ITaskProps) => {
 
   const handleDismissModalPress = useCallback(() => {
     customSheetRef?.current?.closeSheet();
+    onRefresh();
   }, []);
 
   const isTaskRemoved = task?.status === taskStatuses.removed;
@@ -63,10 +64,10 @@ export const TodoCard = ({task}: ITaskProps) => {
         </ImageContainer>
         <InfoContainer>
           <Title numberOfLines={1}>{task?.title}</Title>
+          <Note numberOfLines={2}>{task?.description}</Note>
           <Time customStyles={CardStyles.title}>
             {format(task?.dueDate, 'K:mm a dd MMM yyyy')}
           </Time>
-          <Note numberOfLines={2}>{task?.description}</Note>
         </InfoContainer>
       </CardWrapper>
       <CustomBottomSheet

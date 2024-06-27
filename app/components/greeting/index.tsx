@@ -11,7 +11,7 @@ import {IGreetingProps} from './types';
 import {useLoadableValue} from 'services/hooks/useLoadableValue';
 import {todoSelector} from 'libs/shared/data-access/task/task.selector';
 import {taskStatuses} from 'libs/shared/types/enums/todo.enums';
-import { getGreetingTime } from 'services/helper/utils';
+import { GreetingTimezone } from './greeting-timezone';
 
 const Greeting = ({onPressAdd}: IGreetingProps) => {
   const todoList = useLoadableValue(todoSelector(taskStatuses.todo));
@@ -19,7 +19,7 @@ const Greeting = ({onPressAdd}: IGreetingProps) => {
   return (
     <View>
       <GreetingsWrapper>
-        <Text preset="RegularXl">Good {getGreetingTime()}, User</Text>
+        <GreetingTimezone />
         <IconContainer onPress={onPressAdd}>
           <PlusIcon />
         </IconContainer>

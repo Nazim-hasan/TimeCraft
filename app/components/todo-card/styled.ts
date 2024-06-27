@@ -57,7 +57,9 @@ export const DateTimeContainer = styled.View`
 
 export const CardStyles = StyleSheet.create({
   title: {
-    marginVertical: metrics.spacing.xs,
+    marginTop: -1,
+    marginBottom: metrics.spacing.xs,
     color: colors.lightGray,
+    fontSize: 11,
   }
 })
