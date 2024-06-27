@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import {Screen} from 'layout/shared/screen/Screen';
 import {commonStyles} from 'libs/shared/ui/styleSheet';
-import {TrashScreenStyles} from './styled';
+import {Title, TrashScreenStyles} from './styled';
 import TodoList from 'components/todo-list';
 import {taskStatuses} from 'libs/shared/types/enums/todo.enums';
 
@@ -15,6 +15,9 @@ const TrashScreen = () => {
       themeName="white"
       bounces={false}>
       <Fragment>
+        <Title centered preset="RegularXl">
+          Deleted Task
+        </Title>
         <TodoList status={taskStatuses.removed} />
       </Fragment>
     </Screen>

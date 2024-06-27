@@ -1,3 +1,4 @@
+import Text from 'components/shared/text/Text';
 import {StyleSheet} from 'react-native';
 import styled from 'styled-components/native';
 import {colors} from 'theme/colors';
@@ -10,3 +11,6 @@ export const TrashScreenStyles = StyleSheet.create({
     marginVertical: metrics.spacing.m,
   },
 });
+
+export const Title = styled(Text)`
+`;

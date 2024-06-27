@@ -9,7 +9,6 @@ import CustomBottomSheet, {
   BottomSheetForwardRefType,
 } from 'components/BottomSheet/custom-bottom-sheet';
 import TodoForm from 'components/todo-form/todo-form';
-import { useFocusEffect } from '@react-navigation/native';
 
 const HomeScreen = () => {
   const customSheetRef = useRef<BottomSheetForwardRefType>(null);

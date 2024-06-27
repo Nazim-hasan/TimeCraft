@@ -1,26 +1,16 @@
-import {
-  Image,
-  Pressable,
-  SafeAreaView,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
 import React from 'react';
-import Text from 'components/shared/text/Text';
-import {CommonRoutes} from 'libs/shared/types/enums';
-import {navigate} from 'navigation';
 import {FormProvider, useForm} from 'react-hook-form';
 import {loginFormDefaultValues} from 'libs/shared/mocks/auth.mock';
 import {Screen} from 'layout/shared/screen/Screen';
 import {commonStyles} from 'libs/shared/ui/styleSheet';
-import {loginStyles} from './Login.styled';
 import {ScreenContent} from 'layout/shared/screen/ScreenContent';
 import LoginForm from 'components/login-form/login-form';
 import Button from 'components/shared/button/Botton';
-import {images} from 'theme/images';
 import {colors} from 'theme/colors';
-import { storeData } from 'storage/asyncStore';
-import { useAuthFunction } from 'services/auth/hooks';
+import {useAuthFunction} from 'services/auth/hooks';
+import LottieView from 'lottie-react-native';
+import {animatedIcons} from 'theme/animated-icons';
+import {Slug, loginStyles} from './Login.styled';
 
 const LoginScreen = () => {
   const loginForm = useForm({
@@ -28,6 +18,12 @@ const LoginScreen = () => {
     mode: 'onChange',
   });
   const {handleLogin} = useAuthFunction();
+
+  const handleLoginSubmit = () => {
+    loginForm.handleSubmit(data => {
+      handleLogin(data.email);
+    })();
+  };
 
   return (
     <FormProvider {...loginForm}>
@@ -38,33 +34,24 @@ const LoginScreen = () => {
         themeName={colors.white}
         bounces={false}>
         <ScreenContent>
-          
-          <Text
-            centered
-            customStyles={{
-              marginTop: 10,
-            }}>
-            Ready to make your day productive?
-          </Text>
+          <LottieView
+            style={loginStyles.svgStyles}
+            source={animatedIcons.login}
+            autoPlay
+            loop
+          />
+          <Slug centered>Ready to make your day productive?</Slug>
           <LoginForm />
         </ScreenContent>
       </Screen>
       <Button
         title="Submit"
-        onPress={() => {
-          loginForm.handleSubmit(data => {
-            console.log(data);
-            
-            handleLogin('userToken0010832');
-
-
-          })();
-        }}
+        onPress={handleLoginSubmit}
+        disabled={!loginForm.formState.isValid}
+        customStyles={loginStyles.buttonStyles}
       />
     </FormProvider>
   );
 };
 
 export default LoginScreen;
-
-const styles = StyleSheet.create({});
