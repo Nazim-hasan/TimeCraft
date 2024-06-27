@@ -30,6 +30,13 @@ const Navigation = props => {
     setLoading(false);
   };
 
+  useEffect(() => {
+    if (loading){
+      return SplashScreen.show();
+    }
+    SplashScreen.hide();
+  }, [loading]);
+
   return !loading ? <>{user ? <AppNavigator /> : <AuthNavigator />}</> : null;
 };
 
