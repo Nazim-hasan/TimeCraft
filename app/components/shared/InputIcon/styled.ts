@@ -5,5 +5,4 @@ export const IconContainer = styled.View`
   height: 100%;
   justify-content: center;
   align-items: center;
-  margin-left: 10px;
 `;

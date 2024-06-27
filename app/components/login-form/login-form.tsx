@@ -8,8 +8,9 @@ import {FormInputField} from 'components/shared/FormComponents';
 import {colors} from 'theme/colors';
 import {loginFieldNames} from 'libs/shared/types/enums/auth.enums';
 import {User} from 'services/helper/user-util';
-import { InputIcon } from 'components/shared/InputIcon';
-import { LockFillIcon } from 'assets/icons/LockFill';
+import {InputIcon} from 'components/shared/InputIcon';
+import {LockFillIcon} from 'assets/icons/LockFill';
+import { EmailIcon } from 'assets/icons/Email';
 
 const LoginForm = () => {
   return (
@@ -19,7 +20,6 @@ const LoginForm = () => {
         inputContainerStyle={loginFormStyles.inputContainerStyle}
         inputLabel={'Email'}
         inputLabelColor={colors.lightGray}
-        // placeholderTextColor={theme.color.shadeGray}
         name={loginFieldNames.email}
         placeholder={'Please enter email'}
         rules={{
@@ -30,12 +30,16 @@ const LoginForm = () => {
         autoCorrect={false}
         nextInputName={loginFieldNames.password}
         focusNextOnSubmitEditing
+        renderInputIcon={isFocused => (
+          <InputIcon icon={<EmailIcon focused={isFocused} />} />
+        )}
       />
       <FormInputField
         containerStyle={loginFormStyles.containerStyle}
-        // inputContainerStyle={loginFormStyles.inputContainerStyle}
+        inputContainerStyle={loginFormStyles.inputContainerStyle}
+        inputLabel="Password"
+        inputLabelColor={colors.lightGray}
         name={loginFieldNames.password}
-        // placeholder={t('contactInfoScreen.createPassword')}
         rules={{
           required: true,
           validate: User.isPasswordValid,
@@ -47,7 +51,6 @@ const LoginForm = () => {
         )}
         secureTextEntry
         showSecureIcon
-        borderColor={colors.lightGray}
       />
     </LoginFormContainer>
   );

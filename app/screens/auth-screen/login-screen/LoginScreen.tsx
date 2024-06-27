@@ -10,7 +10,7 @@ import {colors} from 'theme/colors';
 import {useAuthFunction} from 'services/auth/hooks';
 import LottieView from 'lottie-react-native';
 import {animatedIcons} from 'theme/animated-icons';
-import {Slug, loginStyles} from './Login.styled';
+import {AppName, Slug, loginStyles} from './Login.styled';
 
 const LoginScreen = () => {
   const loginForm = useForm({
@@ -34,6 +34,7 @@ const LoginScreen = () => {
         themeName={colors.white}
         bounces={false}>
         <ScreenContent>
+          <AppName centered preset='headingBold'>Time Craft</AppName>
           <LottieView
             style={loginStyles.svgStyles}
             source={animatedIcons.login}

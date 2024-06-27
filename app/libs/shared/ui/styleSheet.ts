@@ -1,3 +1,4 @@
+import { isIos } from 'constants/ui';
 import { StyleSheet } from 'react-native';
 
 import { hp, wp } from 'services/helper/responsive-dimenssion';
@@ -26,7 +27,7 @@ export const commonStyles = StyleSheet.create({
   },
   scrollViewContainerWithoutHeader: {
     flexGrow: 1,
-    marginTop: 30,
+    marginTop: isIos ? 30 : 0,
     paddingBottom: 60,
   },
   skeleton: {
