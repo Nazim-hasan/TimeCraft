@@ -42,7 +42,7 @@ yarn start
 # - apps: all apps
 # - libs: all libs
 # -----------------------------EXAMPLE------------------------------------
-/libs/shared/data-access ---> contains services and utilities for interacting with back-end systems and all code related to state management
+/libs/shared/data-access ---> contains services and utilities code related to state management
 /libs/shared/ui ---> contains only presentational components (in other words - UI kit)
 /libs/shared/types ---> contains common interfaces, enums, constants
 /libs/shared/utils ---> contains common utilities and services used by other libraries and applications
@@ -74,9 +74,8 @@ timecraft/
 
 ### Library types:
 
-- `data-access`: contains services and utilities for interacting with back-end systems and all code related to state management
+- `data-access`: contains services and utilities code related to state management
  - `file`: contains access to file system
-- `other stuffs`: contain smart UI (with injected services) for specific business use-cases or pages in an application
 
 ### An application:
 
