@@ -7,6 +7,7 @@ import {StateProvider} from './app/services/auth/contexts';
 import {RecoilRoot} from 'recoil';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import {LogBox} from 'react-native';
 
 const App = () => {
   const navTheme = {
@@ -16,6 +17,18 @@ const App = () => {
       background: 'transparent',
     },
   };
+
+  // Ignore log notification by message
+  LogBox.ignoreLogs([
+    // Exact message
+    'Warning: componentWillReceiveProps has been renamed',
+
+    // Substring or regex match
+    /GraphQL error: .*/,
+  ]);
+
+  // Ignore all log notifications
+  LogBox.ignoreAllLogs();
 
   return (
     <GestureHandlerRootView>
