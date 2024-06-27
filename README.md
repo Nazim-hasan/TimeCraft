@@ -1,9 +1,12 @@
 # Time Craft
-An React Native App for tracking your daily task
+A React Native App for tracking your daily task
+
+https://github.com/Nazim-hasan/TimeCraft/assets/77955141/b6c35530-4570-4cdc-81ad-38aa22b694fd
+
 
 ## How to run application:
 
-First of all you should have installed `node.js ( >= 18 / latest )`, `watchman ( latest version )`, `XCode` and `cocoapods` for `android` make sure you have installed `ndkVersion (2518937393)`.
+First of all, you should have installed `node.js ( >= 18 / latest )`, `watchman ( latest version )`, `XCode`, and `cocoapods` for `android` make sure you have installed `ndkVersion (2518937393)`.
 
 
 
@@ -42,11 +45,11 @@ yarn start
 # - apps: all apps
 # - libs: all libs
 # -----------------------------EXAMPLE------------------------------------
-/libs/shared/data-access ---> contains services and utilities code related to state management
+/libs/shared/data-access ---> contains services and utility code related to state management
 /libs/shared/ui ---> contains only presentational components (in other words - UI kit)
 /libs/shared/types ---> contains common interfaces, enums, constants
 /libs/shared/utils ---> contains common utilities and services used by other libraries and applications
-/libs/shared/*domain ---> contains libraries, that are related to this domain ( data-access, feature, util, ui )
+/libs/shared/*domain ---> contains libraries, that are related to this domain ( data-access, feature, util, UI )
 
 
 # -----------------------------------------------------------------
@@ -75,13 +78,12 @@ timecraft/
 ### Library types:
 
 - `data-access`: contains services and utilities code related to state management
- - `file`: contains access to file system
+ - `file`: contains access to the file system
 
 ### An application:
 
 - can be built into a deployable artifact
 - contains a configuration for its build process
-- contains a configuration for runnings its tests
 - can consume code from libraries
 
 ### A library:
